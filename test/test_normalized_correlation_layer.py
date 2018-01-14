@@ -47,7 +47,7 @@ def BuildModel(dim, patch_size=15, stride=(5, 5)):
 # Load an example image.
 height = 96
 width = 96
-image = Image.open("Lena.png")
+image = Image.open("beach02.tif")
 image = image.resize((height, width))
 image = np.asarray(image) / 255.
 image = image.astype('float32')
@@ -56,7 +56,7 @@ image_1 = np.expand_dims(image, axis=0)
 image_2 = np.expand_dims(image, axis=0)
 
 # Build Model
-model = BuildModel(dim=(height, width, 3))
+model = BuildModel(dim=(height, width, 3), stride=(1,1), patch_size=5)
 out = model.predict([image_1, image_2])
 
 print('Input shape is : {}'.format(image_1.shape))
