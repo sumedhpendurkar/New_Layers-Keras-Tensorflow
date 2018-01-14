@@ -90,8 +90,8 @@ class Normalized_Correlation_Layer(Layer):
         xc_1 = []
         xc_2 = []
         for i in range(output_row):
+            slice_row = slice(i, i + self.kernel_size)
             for j in range(output_col):
-                slice_row = slice(i, i + self.kernel_size)
                 slice_col = slice(j, j + self.kernel_size)
                 xc_2.append(K.reshape(input_2[:, slice_row, slice_col, :],
                                       (-1, 1, self.kernel_size**2*inp_shape[-1])))
